@@ -1,0 +1,13 @@
+import type { Metadata } from "next";
+import "./globals.css";
+export const metadata: Metadata = {
+  title: "NOXIS BOT · Control Center",
+  description: "Panel privado de administración NOXIS BOT",
+};
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="es">
+      <body>{children}</body>
+    </html>
+  );
+}

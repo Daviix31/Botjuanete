@@ -1,0 +1,30 @@
+{
+  "name": "@noxis/bot",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch --import tsx src/index.ts",
+    "start": "node --import tsx src/index.ts",
+    "deploy:commands": "node --import tsx src/deploy-commands.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@discordjs/voice": "0.19.2",
+    "@noxis/database": "0.2.0",
+    "@noxis/shared": "0.2.0",
+    "discord.js": "14.27.0",
+    "dotenv": "^17.2.3",
+    "ipaddr.js": "^2.5.0",
+    "opusscript": "^0.0.8",
+    "zod": "^4.1.12",
+    "tsx": "^4.20.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.1",
+    "typescript": "^5.9.3"
+  },
+  "optionalDependencies": {
+    "ffmpeg-static": "^5.2.0"
+  }
+}

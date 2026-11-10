@@ -1,0 +1,46 @@
+{
+  "name": "noxis-bot-platform",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Plataforma privada NOXIS BOT: Discord bot, API y panel web.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=24.17.0",
+    "npm": ">=10"
+  },
+  "scripts": {
+    "dev:bot": "npm run dev --workspace @noxis/bot",
+    "dev:api": "npm run dev --workspace @noxis/api",
+    "dev:web": "npm run dev --workspace @noxis/dashboard",
+    "deploy:commands": "npm run deploy:commands --workspace @noxis/bot",
+    "db:migrate": "npm run migrate --workspace @noxis/database",
+    "typecheck": "npm run typecheck --workspaces --if-present && tsc --noEmit -p tsconfig.tools.json",
+    "build": "npm run build --workspace @noxis/dashboard",
+    "start:bot": "npm run start --workspace @noxis/bot",
+    "start:api": "npm run start --workspace @noxis/api",
+    "start:web": "npm run start --workspace @noxis/dashboard",
+    "test": "node --import tsx scripts/test-runner.ts",
+    "test:e2e": "node --import tsx scripts/e2e-runner.ts",
+    "check": "npm run typecheck && npm test && npm run build",
+    "doctor": "node --import tsx scripts/doctor.ts",
+    "db:backup": "node --import tsx scripts/backup.ts",
+    "format": "prettier --write .",
+    "test:db": "node --import tsx scripts/test-db.ts",
+    "setup": "node --import tsx scripts/setup.ts",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.15",
+    "@electric-sql/pglite-socket": "^0.2.18",
+    "@playwright/test": "^1.58.0",
+    "@sparticuz/chromium": "^153.0.0",
+    "@types/node": "^24.0.0",
+    "prettier": "^3.9.10",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  },
+  "type": "module"
+}

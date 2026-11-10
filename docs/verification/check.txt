@@ -1,0 +1,103 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> noxis-bot-platform@0.2.0 check
+> npm run typecheck && npm test && npm run build
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> noxis-bot-platform@0.2.0 typecheck
+> npm run typecheck --workspaces --if-present && tsc --noEmit -p tsconfig.tools.json
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @noxis/api@0.2.0 typecheck
+> tsc --noEmit -p tsconfig.json
+
+
+> @noxis/bot@0.2.0 typecheck
+> tsc --noEmit -p tsconfig.json
+
+
+> @noxis/dashboard@0.2.0 typecheck
+> tsc --noEmit -p tsconfig.json
+
+
+> @noxis/database@0.2.0 typecheck
+> tsc --noEmit -p tsconfig.json
+
+
+> @noxis/shared@0.2.0 typecheck
+> tsc --noEmit -p tsconfig.json
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> noxis-bot-platform@0.2.0 test
+> node --import tsx scripts/test-runner.ts
+
+Pruebas contra PostgreSQL WASM aislado por TCP (PGlite). La prueba de concurrencia nativa requiere TEST_DATABASE_URL con PostgreSQL 17.
+✔ health consulta PostgreSQL y rutas privadas rechazan acceso anónimo (42.898126ms)
+✔ OAuth exige state válido, niega externos y emite cookie HttpOnly al OWNER (15.424868ms)
+✔ CSRF, origen, servidor y validación bloquean mutaciones inválidas (22.980005ms)
+✔ acciones del panel se encolan con confirmación e idempotencia (23.804207ms)
+✔ programación, plantillas y métricas del panel usan datos persistentes (37.177195ms)
+✔ logout revoca el JWT y rechaza su reutilización (3.968138ms)
+✔ rate limiting responde 429 (13.854563ms)
+✔ los 11 comandos slash se serializan sin opciones inválidas ni nombres duplicados (18.091043ms)
+✔ plantillas crean recursos una vez y conservan la configuración existente (28.249995ms)
+✔ servicios vuelven a comprobar permisos antes de crear recursos (1.218874ms)
+✔ worker persiste éxito y fallo sin ejecutar de nuevo un trabajo (14.869852ms)
+✔ conexión PostgreSQL y migraciones idempotentes (23.482951ms)
+✔ merge profundo atómico conserva opciones y registra auditoría (12.424292ms)
+✔ trabajos idempotentes y reclamación única con registro del resultado (9.503772ms)
+✔ anuncios pendientes se pueden cancelar y no se reclaman dos veces (7.519123ms)
+✔ tickets únicos; votos reemplazables; sorteos persistentes; XP con cooldown (33.672205ms)
+✔ exportación consistente excluye sesiones y datos de otros servidores (7.242237ms)
+✔ transacciones fallidas revierten sus escrituras (1.444161ms)
+✔ DAVE y Opus están instalados; FFmpeg genera audio que el player codifica (445.929683ms)
+✔ las fuentes locales se rechazan antes de intentar HTTPS (5.40623ms)
+✔ una fuente fallida se devuelve como error y no deja una sesión fantasma (1.092204ms)
+✔ detener durante una carga cancela la descarga y no reinicia la sesión (0.397394ms)
+✔ el fallo de una pista no borra la siguiente añadida durante la carga (4.288879ms)
+✔ validación estricta de configuración, IDs y límites (4.432453ms)
+✔ plantillas de mensajes y niveles no ejecutan contenido (0.215803ms)
+✔ roles respetan jerarquía del actor y del bot (0.317085ms)
+✔ antispam observa por defecto y exige reincidencia explícita (0.371236ms)
+✔ raid usa la ventana configurada; caché tiene tamaño acotado (0.933957ms)
+✔ música bloquea SSRF, credenciales, redirecciones de URL y hosts no autorizados (4.403931ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3757.99594
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> noxis-bot-platform@0.2.0 build
+> npm run build --workspace @noxis/dashboard
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @noxis/dashboard@0.2.0 build
+> next build
+
+▲ Next.js 16.4.5 (Turbopack)
+✓ Running next.config.ts took 26ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 128ms
+  Running TypeScript ...
+  Finished TypeScript in 1033ms ...
+  Collecting page data using 4 workers ...
+  Generating static pages using 4 workers (0/3) ...
+✓ Generating static pages using 4 workers (3/3) in 266ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+└ ○ /_not-found
+
+
+○  (Static)  prerendered as static content
+

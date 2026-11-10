@@ -1,0 +1,38 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> noxis-bot-platform@0.2.0 test:e2e
+> node --import tsx scripts/e2e-runner.ts
+
+▲ Next.js 16.4.5 (Turbopack)
+✓ Running next.config.ts took 32ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 145ms
+  Running TypeScript ...
+  Finished TypeScript in 2.2s ...
+  Collecting page data using 4 workers ...
+  Generating static pages using 4 workers (0/3) ...
+✓ Generating static pages using 4 workers (3/3) in 348ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+└ ○ /_not-found
+
+
+○  (Static)  prerendered as static content
+
+▲ Next.js 16.4.5
+- Local:         http://127.0.0.1:3000
+- Network:       http://127.0.0.1:3000
+✓ Ready in 94ms
+✓ Running next.config.ts took 29ms
+
+Running 2 tests using 1 worker
+
+(node:180) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/dashboard.spec.ts:2:1 › acceso anónimo y diseño móvil (566ms)
+  ✓  2 tests/e2e/dashboard.spec.ts:14:1 › panel autorizado persiste configuración y ofrece los módulos (3.3s)
+
+  2 passed (4.3s)

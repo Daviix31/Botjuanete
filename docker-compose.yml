@@ -1,0 +1,65 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: noxis_bot
+      POSTGRES_USER: noxis
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Ejecuta npm run setup y completa .env}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - noxis_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U noxis -d noxis_bot"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  migrate:
+    profiles: [app]
+    build:
+      context: .
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:4000}
+    image: noxis-bot:0.2
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://noxis:${POSTGRES_PASSWORD}@postgres:5432/noxis_bot
+    command: [npm, run, "db:migrate"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+  api:
+    profiles: [app]
+    image: noxis-bot:0.2
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      API_HOST: 0.0.0.0
+      DATABASE_URL: postgresql://noxis:${POSTGRES_PASSWORD}@postgres:5432/noxis_bot
+    command: [npm, run, "start:api"]
+    ports: ["127.0.0.1:4000:4000"]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+  bot:
+    profiles: [app]
+    image: noxis-bot:0.2
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://noxis:${POSTGRES_PASSWORD}@postgres:5432/noxis_bot
+    command: [npm, run, "start:bot"]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+  dashboard:
+    profiles: [app]
+    image: noxis-bot:0.2
+    restart: unless-stopped
+    env_file: .env
+    command: [npm, run, "start:web"]
+    ports: ["127.0.0.1:3000:3000"]
+    depends_on: [api]
+volumes:
+  noxis_postgres_data:
